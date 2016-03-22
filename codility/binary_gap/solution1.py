@@ -6,17 +6,19 @@ def solution(N):
     
     gap = 0 # gap length
     bg = 0 # begin gap
-    for i, item in enumerate(b):   
+    for i, item in enumerate(b):
+        # import ipdb; ipdb.set_trace()   
+        if bg == 1 and item == '0':
+            gap += 1
+        
+        if b[i - 1 : i + 1] == '01' and i > 0:
+            bg = 0
+            gaps.append(gap)
+            gap = 0 # reset gap
+
         if b[i:i+2] == '10':
             # beginning of a gap
             bg = 1
-        
-        if bg==1 and item == '0':
-            gap += 1
-        
-        if item == '1' and i > 0:
-            bg = 0
-            gaps.append(gap)
     
     if len(gaps) == 0:
         return 0
