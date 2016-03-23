@@ -9,6 +9,8 @@ def solution(N):
         N = N.split('1')[:-1]
     else:
         N = N.split('1')
+
+    # filtering out empty strings
     N = [elem for elem in N if elem]
     if N:
         return len(max(N))
